@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LED Control</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+        button {
+            font-size: 20px;
+            padding: 10px 20px;
+            margin: 10px;
+            cursor: pointer;
+        }
+        .status {
+            font-size: 30px;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+        .on {
+            color: green;
+        }
+        .off {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>LED Control</h1>
+    <div class="status {% if led_status == 1 %}on{% else %}off{% endif %}">
+        LED is {% if led_status == 1 %}ON{% else %}OFF{% endif %}
+    </div>
+    <br>
+    <a href="{{ url_for('turn_on') }}">
+        <button>Turn LED ON</button>
+    </a>
+    <a href="{{ url_for('turn_off') }}">
+        <button>Turn LED OFF</button>
+    </a>
+</body>
+</html>
