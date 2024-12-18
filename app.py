@@ -16,27 +16,21 @@ def index():
     led_status = GPIO.input(LED_PIN)  # Read the current state of the LED
     return render_template('index.html', led_status=led_status)
 
-@app.route('/on')
-def turn_on():
-    """ Route to turn on the LED """
+@app.route('/toggle')
+def toggle_led():
+    """ Route to toggle the LED """
     try:
-        GPIO.output(LED_PIN, GPIO.HIGH)  # Turn on LED
-        print("LED turned ON")
+        # Get current LED state and toggle it
+        current_status = GPIO.input(LED_PIN)
+        new_status = GPIO.LOW if current_status == GPIO.HIGH else GPIO.HIGH
+        GPIO.output(LED_PIN, new_status)  # Set the new state for the LED
+        print("LED toggled, current state:", "ON" if new_status == GPIO.HIGH else "OFF")
+        
+        # Redirect to the home route to reflect the new state
         return redirect(url_for('index'))
     except Exception as e:
-        print(f"Error turning LED on: {e}")
-        return f"Error turning LED on: {e}", 500
-
-@app.route('/off')
-def turn_off():
-    """ Route to turn off the LED """
-    try:
-        GPIO.output(LED_PIN, GPIO.LOW)  # Turn off LED
-        print("LED turned OFF")
-        return redirect(url_for('index'))
-    except Exception as e:
-        print(f"Error turning LED off: {e}")
-        return f"Error turning LED off: {e}", 500
+        print(f"Error toggling LED: {e}")
+        return f"Error toggling LED: {e}", 500
 
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0", port=5000)

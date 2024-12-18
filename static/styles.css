@@ -1,0 +1,79 @@
+/* Définir l'image de fond d'écran */
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-image: url("/static/futura.png");
+    background-repeat: repeat;  /* L'image se répète sur toute la page */
+    background-position: top left;  /* Positionner l'image en haut à gauche */
+    background-size: auto;  /* Garde la taille originale de l'image */
+}
+
+/* Conteneur central */
+.container {
+    text-align: center;
+    width: 100%;
+    max-width: 500px;  /* Limiter la largeur du contenu */
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8); /* Fond semi-transparent pour améliorer la lisibilité */
+    border-radius: 10px;
+}
+
+/* Boutons de contrôle */
+.btn {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 24px;
+    display: inline-block;
+    margin: 15px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+/* Bouton hover et active */
+.btn:hover {
+    background-color: #45a049;
+}
+
+.btn:active {
+    background-color: #3e8e41;
+}
+
+/* Affichage de la statut de la LED */
+.status {
+    font-size: 30px;
+    margin-top: 20px;
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 8px;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Style de la LED allumée */
+.on {
+    color: green;
+}
+
+/* Style de la LED éteinte */
+.off {
+    color: red;
+}
+
+/* Responsivité pour les petits écrans */
+@media screen and (max-width: 600px) {
+    .container {
+        padding: 20px;
+    }
+
+    .btn {
+        width: 100%;  /* Les boutons prennent toute la largeur sur les petits écrans */
+        margin: 10px 0;
+    }
+}
